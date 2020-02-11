@@ -1,3 +1,3 @@
 # Eloquent JS
 
-Contains solution of the exercises of book [Eloquent JS](https://eloquentjavascript.net/)
+Contains solutions of the exercises from book [Eloquent JS](https://eloquentjavascript.net/)
