@@ -1,4 +1,4 @@
-const number = /^[-+]?(0|[1-9]\d*)(\.\d+)?(e[+-]?\d+)?/gi
+const number = /^[-+]?(0|[1-9]\d*)(\.\d*)?(e[+-]?\d+)?/gi
 
 // Tests:
 for (const str of [
