@@ -1,7 +1,6 @@
 const x = 1
 function evalAndReturnX (code) {
   eval(code)
-  console.log(x)
   return x
 }
 
