@@ -8,3 +8,4 @@ console.log(evalAndReturnX('var x = 2'))
 // → 2
 console.log(x)
 // → 1
+// -> 1212
