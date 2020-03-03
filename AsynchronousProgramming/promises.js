@@ -51,14 +51,15 @@
 //   .catch(message => console.log(message))
 
 const p = new Promise((resolve, reject) => {
-  const a = 1 + 2
+  const a = 1 + 1
   //   console.log('fdf')
   //   throw new Error('VIN')
+  const b = () => { return a }
   if (a === 2) {
-    resolve('success')
+    resolve(b)
   } else {
     reject(new Error('Vn'))
   }
 })
 
-p.then((res) => console.log(res), (rej) => console.log(rej))
+p.then((res) => console.log(res()), (rej) => console.log(rej))
