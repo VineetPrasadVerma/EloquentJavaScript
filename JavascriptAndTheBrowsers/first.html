@@ -2,11 +2,101 @@
 <html>
     <head> 
         <meta charset="utf-8">
-        <title>Vineet Web Page</title>
+        <title>Vineet Web Page</title>.
+        <style>
+            strong {
+              font-style: italic;
+              color: gray;
+            }
+          </style>
     </head>  
     <body>
         <h1>First heading</h1>
         <p>This is the first paragraph</p>
-        <a href="www.javascript.info">Click here</a>
+        <p> 
+            <a href="www.javascript.info">Click here</a>
+        </p>
+        <p>My Ostrich Gertrude:</p>
+        <button onclick="replaceImages()">Replace</button>
+        <p><img id="gertude" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/white-ostrich-matthew-kramer.jpg" alt="ostrich image"></p>
+        <p>one</p>
+        <p>two</p>
+        <blockquote id="quote">
+            No book can never be fininshed. While working on it we learn just enough to find it
+            immature the momemnt we turn away from it.
+        </blockquote>
+        <p>three</p>
+
+        <p style="border: 3px solid red">I am Vineet</p>
+        <p> <a href="." style="color: green; border: 2px solid">Greenlink</a></p>
+
+        This text is displayed <strong>inline</strong>,
+        <strong style="display: block">as a block</strong>, and
+        <strong style="display: none">not at all</strong>.
+
+        <p id="para" style="color: purple"> Nice text </p>
+
+        <p>Now <strong>strong text</strong> is italic and gray.</p>
+
+        <p style="text-align: center">
+            <h6 id="vi" style="position: relative">Vineet</h6>
+        </p>
+          
     </body>
+    <script>
+        console.log(document.getElementById("gertude").id)
+        const paragraphs = document.body.getElementsByTagName("p")
+        document.body.insertBefore(paragraphs[6], paragraphs[4])
+
+        // to replace all the img tags with alt tags in html
+        function replaceImages(){
+            let images = document.body.getElementsByTagName("img")
+            for(let i=0; i<images.length; i++){
+                if(images[i].alt){
+                    let textNode = document.createTextNode(images[i].alt)
+                    images[i].parentNode.replaceChild(textNode, images[i])
+                }
+            }
+        }
+
+        // creating element 
+        function elt(type, ...children) {
+            let node = document.createElement(type);
+            for (let child of children) {
+            if (typeof child != "string") node.appendChild(child);
+            else node.appendChild(document.createTextNode(child));
+            }
+            return node;
+        }
+
+        document.getElementById("quote").appendChild(
+            elt("footer", "—",
+                elt("strong", "Karl Popper"),
+                ", preface to the second edition of ",
+                elt("em", "The Open Society and Its Enemies"),
+                ", 1950"));
+
+        let para = document.body.getElementsByTagName("p");
+        para = para[para.length-1]
+        console.log("clientHeight:", para.clientHeight);
+        console.log("offsetHeight:", para.offsetHeight);
+
+        // let para = document.getElementById("para");
+        // console.log(para.style.color);
+        // para.style.color = "magenta";
+
+        let cat = document.querySelector("#vi");
+        console.log(cat)
+        let angle = Math.PI / 2;
+        function animate(time, lastTime) {
+            if (lastTime != null) {
+            angle += (time - lastTime) * 0.001;
+            }
+            cat.style.top = (Math.sin(angle) * 20) + "px";
+            cat.style.left = (Math.cos(angle) * 200) + "px";
+            requestAnimationFrame(newTime => animate(newTime, time));
+        }
+        requestAnimationFrame(animate);
+
+    </script>
 </html>
