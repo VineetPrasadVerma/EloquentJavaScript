@@ -15,7 +15,7 @@ const b = 2
 
 setTimeout(() => {
   console.log('asynchronous')
-}, 1000)
+}, 2000)
 
 console.log('Synchronous')
 console.log(a)
@@ -25,7 +25,7 @@ function doHomework (subject, callback) {
   console.log(`Starting my ${subject} homework.`)
   callback()
   setTimeout(() => {
-    console.log('Vineet')
+    console.log('test')
   }, 1000)
 }
 

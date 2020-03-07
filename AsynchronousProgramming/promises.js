@@ -1,14 +1,14 @@
-// const p = new Promise((resolve, reject) => {
-//   const a = 1 + 3
-//   if (a === 2) {
-//     resolve('success')
-//   } else {
-//     reject('failed')
-//   }
-// })
+const p = new Promise((resolve, reject) => {
+  const a = 1 + 1
+  if (a === 2) {
+    resolve('success')
+  } else {
+    reject('failed')
+  }
+})
 
-// p.then((message) => console.log(`This is inside then ${message}`))
-//   . catch((message) => console.log(`This is inside then ${message}`))
+p.then((message) => console.log(`This is inside then ${message}`))
+  . catch((message) => console.log(`This is inside then ${message}`))
 
 // const userLeft = false
 // const userWatchingCateMeme = false
@@ -50,16 +50,16 @@
 //   . then(messages => console.log(messages))
 //   .catch(message => console.log(message))
 
-const p = new Promise((resolve, reject) => {
-  const a = 1 + 1
-  //   console.log('fdf')
-  //   throw new Error('VIN')
-  const b = () => { return a }
-  if (a === 2) {
-    resolve(b)
-  } else {
-    reject(new Error('Vn'))
-  }
-})
+// const p = new Promise((resolve, reject) => {
+//   const a = 1 + 1
+//   //   console.log('fdf')
+//   //   throw new Error('VIN')
+//   const b = () => { return a }
+//   if (a === 2) {
+//     resolve(b)
+//   } else {
+//     reject(new Error('Vn'))
+//   }
+// })
 
-p.then((res) => console.log(res()), (rej) => console.log(rej))
+// p.then((res) => console.log(res()), (rej) => console.log(rej))
