@@ -1,0 +1,47 @@
+<!doctype html>
+
+<style>
+    .cl{
+        color: red;
+    }
+</style>
+<tab-panel>
+  <div data-tabname="one">Tab one</div>
+  <div data-tabname="two">Tab two</div>
+  <div data-tabname="three">Tab three</div>
+</tab-panel>
+<script>
+  function asTabs(node) {
+    let childNodesList = node.children
+    // console.log(childNodesList)
+    for(let eachNode of Array.from(childNodesList)){
+        console.log(eachNode)
+        let button = document.createElement('button')
+        button.textContent = eachNode.getAttribute('data-tabname')
+        node.replaceChild(button, eachNode)
+    }
+
+    // node.insertAdjacentHTML('beforeend', '<br>')
+    // let para = document.createElement('p')
+    // console.log(para.innerHTML)
+    node.insertAdjacentHTML('beforeend', '<p class="cl" id="para"></p>')
+    // para.style.display = 'none'
+    console.log(para.innerHTML, 'para')
+    childNodesList = node.children
+    for(let childNode of Array.from(childNodesList)){
+        // console.log(childNode)
+        childNode.addEventListener("click", (event) => {
+            console.log(childNode.textContent)
+            document.getElementById('para').textContent = childNode.textContent
+            childNode.classList.toggle('cl')
+            // node.insertAdjacentHTML('beforeend', '<br>')
+            //node.insertAdjacentHTML('beforeend', childNode.textContent)
+            // node.appendChild(document.createTextNode(childNode.textContent)
+            // console.log(para)
+            // para.style.display = 'none'       
+        })
+    }
+
+  }
+  asTabs(document.querySelector("tab-panel"));
+</script>
