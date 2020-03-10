@@ -17,7 +17,7 @@
   let dots = [];
   for (let i = 0; i < 12; i++) {
     let node = document.createElement("div");
-    node.className = "trail";
+    node.classList.add('trail')
     document.body.appendChild(node);
     dots.push(node);
   }
