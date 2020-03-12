@@ -1,0 +1,12 @@
+<script>
+    const types = ["text/plain",
+               "text/html",
+               "application/json",
+                "application/rainbows+unicorns"]
+
+    for(let type of types){
+        console.log((fetch('https://eloquentjavascript.net/author', {headers: {accept: type}}))
+        .then(res => res.text()).then(resp => console.log(resp)))
+        
+    }
+</script>
