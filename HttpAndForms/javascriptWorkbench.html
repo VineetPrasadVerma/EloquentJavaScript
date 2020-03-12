@@ -1,0 +1,15 @@
+<!doctype html>
+    <textarea name="area" id="code" cols="30" rows="10"></textarea>
+    <button id="button">Run</button>
+    <p id="output"></p>
+<script>
+  // Your code here.
+  document.querySelector("#button").addEventListener('click', (event)=>{
+    try{
+        let result = Function(document.querySelector("#code").value)()
+        document.querySelector("#output").textContent = String(result)
+    }catch(e){
+        document.querySelector("#output").textContent = "Error " + e
+    }
+  })
+</script>
