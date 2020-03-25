@@ -203,8 +203,8 @@ class Level {
       })
     })
 
-    console.log(this.startActors)
-    console.log(this.rows)
+    // console.log(this.startActors)
+    // console.log(this.rows)
   }
 }
 
@@ -539,12 +539,23 @@ function runLevel (level, Display) {
   })
 }
 async function runGame (plans, Display) {
-  for (let level = 0; level < plans.length;) {
-    const status = await runLevel(new Level(plans[level]),
-      Display)
-    if (status === 'won') level++
+  let totalLife = 3
+  for (let level = 0; level < plans.length && totalLife > 0;) {
+    const status = await runLevel(new Level(plans[level]), Display)
+    if (status === 'won') {
+      level++
+      // console.log('sdas')
+    } else {
+      // if (totalLife === 0) totalLife = 3
+      totalLife--
+    }
   }
-  console.log("You've won!")
+  if (totalLife > 0) {
+    console.log("You've won!")
+  } else {
+    totalLife = 3
+    console.log('GameOver')
+  }
 }
 // const simpleLevel = new Level(simpleLevelPlan)
 // const display = new DOMDisplay(document.body, simpleLevel)
