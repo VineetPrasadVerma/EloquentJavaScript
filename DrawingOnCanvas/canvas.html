@@ -102,11 +102,24 @@
   </script> -->
 
 <!-- </script> -->
-<canvas></canvas>
+<!-- <canvas></canvas>
 <script>
   let cx = document.querySelector("canvas").getContext("2d");
   cx.font = "28px arial";
   cx.fillStyle = "fuchsia";
   cx.fillText("I can draw text, too!", 10, 50);
   cx.textAlign = 'end'
+</script> -->
+
+<canvas width="1000" height="1000"></canvas>
+<script>
+  let cx = document.querySelector("canvas").getContext("2d");
+  let img = document.createElement("img");
+  img.src = "https://i.ytimg.com/vi/-3rlubKhaRM/maxresdefault.jpg";
+  img.addEventListener("load", () => {
+    for (let x = 10; x < 200; x += 30) {
+      cx.drawImage(img, x, 10);
+    }
+    // cx.drawImage(img, 100, 100)
+  });
 </script>
