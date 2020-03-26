@@ -74,7 +74,7 @@
   cx.arc(150, 50, 40, 0, 2 * Math.PI);
   cx.stroke(); -->
 
-  <canvas width="200" height="200"></canvas>
+  <!-- <canvas width="200" height="200"></canvas>
   <script>
       const results = [
         {name: "Satisfied", count: 1043, color: "lightblue"},
@@ -99,6 +99,14 @@
       cx.fillStyle = result.color;
       cx.fill();
     }
-  </script>
+  </script> -->
 
+<!-- </script> -->
+<canvas></canvas>
+<script>
+  let cx = document.querySelector("canvas").getContext("2d");
+  cx.font = "28px arial";
+  cx.fillStyle = "fuchsia";
+  cx.fillText("I can draw text, too!", 10, 50);
+  cx.textAlign = 'end'
 </script>
