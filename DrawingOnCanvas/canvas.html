@@ -124,7 +124,7 @@
   });
 </script> -->
 
-<canvas width="1000" height="1000"></canvas>
+<!-- <canvas width="1000" height="1000"></canvas>
 <script>
   let cx = document.querySelector("canvas").getContext("2d");
   let img = document.createElement("img");
@@ -142,4 +142,14 @@
       cycle = (cycle + 1) % 8;
     }, 1000);
   });
+</script> -->
+
+<canvas width="1000" height="1000"></canvas>
+<script>
+  let cx = document.querySelector("canvas").getContext("2d");
+  cx.scale(3, 2);
+  cx.beginPath();
+  cx.arc(50, 50, 40, 0, 7);
+  cx.lineWidth = 3;
+  cx.stroke();
 </script>
