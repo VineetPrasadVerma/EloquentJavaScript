@@ -144,7 +144,7 @@
   });
 </script> -->
 
-<canvas width="1000" height="1000"></canvas>
+<!-- <canvas width="1000" height="1000"></canvas>
 <script>
   let cx = document.querySelector("canvas").getContext("2d");
   cx.scale(3, 2);
@@ -152,4 +152,22 @@
   cx.arc(50, 50, 40, 0, 7);
   cx.lineWidth = 3;
   cx.stroke();
+</script> -->
+
+<canvas width="1000" height="1000"></canvas>
+<script>
+    function flipHorizontally(context, around) {
+  context.translate(around, 0);
+  context.scale(-1, 1);
+  context.translate(-around, 0);
+}
+  let cx = document.querySelector("canvas").getContext("2d");
+  let img = document.createElement("img");
+  img.src = "https://eloquentjavascript.net/img/player_big.png";
+  let spriteW = 48, spriteH = 60;
+  img.addEventListener("load", () => {
+    flipHorizontally(cx, 70);
+    cx.drawImage(img, 0, 0, spriteW, spriteH,
+                 100, 0, spriteW, spriteH);
+  });
 </script>
