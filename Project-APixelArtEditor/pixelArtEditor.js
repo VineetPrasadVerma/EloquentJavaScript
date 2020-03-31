@@ -129,11 +129,29 @@ class PixelEditor {
       const onMove = tool(pos, this.state, dispatch)
       if (onMove) return pos => onMove(pos, this.state)
     })
+
     this.controls = controls.map(
       Control => new Control(state, config))
-    this.dom = elt('div', {}, this.canvas.dom, elt('br'),
+    // console.log(this.controls)
+    this.dom = elt('div', { tabIndex: 0, onkeydown: event => this.keyDown(event, config) }, this.canvas.dom, elt('br'),
       ...this.controls.reduce(
         (a, c) => a.concat(' ', c.dom), []))
+  }
+
+  keyDown (event, config) {
+    if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault()
+      config.dispatch({ undo: true })
+    } else if (!event.ctrlKey && !event.metaKey && !event.altKey) {
+      for (const tool of Object.keys(config.tools)) {
+        if (tool[0] === event.key) {
+          // console.log(tool[0])
+          event.preventDefault()
+          config.dispatch({ tool })
+          return
+        }
+      }
+    }
   }
 
   syncState (state) {
