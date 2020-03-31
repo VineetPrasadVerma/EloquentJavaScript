@@ -227,6 +227,28 @@ function rectangle (start, state, dispatch) {
   return drawRectangle
 }
 
+function circle (pos, state, dispatch) {
+  function drawCircle (to) {
+    const radius = Math.sqrt(Math.pow(to.x - pos.x, 2) +
+                           Math.pow(to.y - pos.y, 2))
+    const radiusC = Math.ceil(radius)
+    const drawn = []
+    for (let dy = -radiusC; dy <= radiusC; dy++) {
+      for (let dx = -radiusC; dx <= radiusC; dx++) {
+        const dist = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+        if (dist > radius) continue
+        const y = pos.y + dy; const x = pos.x + dx
+        if (y < 0 || y >= state.picture.height ||
+            x < 0 || x >= state.picture.width) continue
+        drawn.push({ x, y, color: state.color })
+      }
+    }
+    dispatch({ picture: state.picture.draw(drawn) })
+  }
+  drawCircle(pos)
+  return drawCircle
+}
+
 const around = [{ dx: -1, dy: 0 }, { dx: 1, dy: 0 },
   { dx: 0, dy: -1 }, { dx: 0, dy: 1 }]
 
@@ -384,7 +406,7 @@ const startState = {
   doneAt: 0
 }
 
-const baseTools = { draw, fill, rectangle, pick }
+const baseTools = { draw, fill, rectangle, circle, pick }
 
 const baseControls = [
   ToolSelect, ColorSelect, SaveButton, LoadButton, UndoButton
