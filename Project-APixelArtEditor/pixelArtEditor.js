@@ -23,9 +23,9 @@ class Picture {
   }
 }
 
-function updateState (state, action) {
-  return Object.assign({}, state, action)
-}
+// function updateState (state, action) {
+//   return Object.assign({}, state, action)
+// }
 
 function elt (type, props, ...children) {
   const dom = document.createElement(type)
@@ -252,6 +252,7 @@ class SaveButton {
       href: canvas.toDataURL(),
       download: 'pixelart.png'
     })
+    // console.log(canvas.toDataURL)
     document.body.appendChild(link)
     link.click()
     link.remove()
