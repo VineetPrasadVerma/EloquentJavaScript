@@ -25,6 +25,7 @@ async function notAllowed (request) {
 
 const { parse } = require('url')
 const { resolve, sep } = require('path')
+// const { mkdir } = require('fs')
 
 const baseDirectory = process.cwd()
 
@@ -61,7 +62,7 @@ methods.GET = async function (request) {
   }
 }
 
-const { rmdir, unlink } = require('fs').promises
+const { rmdir, unlink, mkdir } = require('fs').promises
 
 methods.DELETE = async function (request) {
   const path = urlPath(request.url)
@@ -75,6 +76,22 @@ methods.DELETE = async function (request) {
   if (stats.isDirectory()) await rmdir(path)
   else await unlink(path)
   return { status: 204 }
+}
+
+methods.MKCOL = async function (request) {
+//   console.log('sdasd')
+  const path = urlPath(request.url)
+  let stats
+  try {
+    stats = await stat(path)
+  } catch (error) {
+    // console.log('vin', error)
+    await mkdir(path)
+    return { status: 204 }
+  }
+
+  if (stats.isDirectory()) return { status: 204 }
+  else return { status: 400, body: 'Not a directory' }
 }
 
 const { createWriteStream } = require('fs')
