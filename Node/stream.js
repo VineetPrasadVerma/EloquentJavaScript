@@ -6,9 +6,9 @@ createServer((request, response) => {
   request.on('end', () => response.end())
 }).listen(8000)
 
-const data = JSON.stringify({
-  todo: 'Buy the milk'
-})
+// const data = JSON.stringify({
+//   todo: 'Buy the milk'
+// })
 
 const { request } = require('http')
 request({
