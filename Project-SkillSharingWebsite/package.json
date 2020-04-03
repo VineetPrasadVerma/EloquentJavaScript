@@ -1,13 +1,13 @@
 {
   "name": "project-skillsharingwebsite",
   "version": "1.0.0",
-  "description": "",
-  "main": "router.js",
+  "description": "Skill Sharing webshite",
+  "main": "skillsharing.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Vineet Verma",
   "license": "ISC",
   "dependencies": {
     "ecstatic": "^4.1.4"
