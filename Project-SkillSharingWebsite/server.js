@@ -160,6 +160,7 @@
 // new SkillShareServer(Object.create(null)).start(8000)
 
 var { createServer } = require('http')
+const { readFileSync, writeFile } = require('fs')
 var Router = require('./router')
 var ecstatic = require('ecstatic')
 
@@ -314,6 +315,20 @@ SkillShareServer.prototype.updated = function () {
   const response = this.talkResponse()
   this.waiting.forEach(resolve => resolve(response))
   this.waiting = []
+
+  writeFile('./talks.json', JSON.stringify(this.talks), e => {
+    if (e) throw e
+  })
 }
 
-new SkillShareServer(Object.create(null)).start(8000)
+function loadTalks () {
+  let json
+  try {
+    json = JSON.parse(readFileSync('./talks.json', 'utf8'))
+  } catch (e) {
+    json = {}
+  }
+  return Object.assign(Object.create(null), json)
+}
+
+new SkillShareServer(loadTalks()).start(8000)
