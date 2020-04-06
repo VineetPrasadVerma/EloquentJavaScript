@@ -275,9 +275,9 @@ function findPath (a, b) {
   const work = [[a]]
   for (const path of work) {
     const end = path[path.length - 1]
-    if (end == b) return path
+    if (end === b) return path
     for (const next of end.edges) {
-      if (!work.some(path => path[path.length - 1] == next)) {
+      if (!work.some(path => path[path.length - 1] === next)) {
         work.push(path.concat([next]))
       }
     }
