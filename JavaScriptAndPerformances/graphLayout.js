@@ -291,3 +291,11 @@ console.log(findPath(root, leaf).length)
 
 leaf.connect(root)
 console.log(findPath(root, leaf).length)
+
+function time (findPath) {
+  const graph = treeGraph(6, 6)
+  const startTime = Date.now()
+  const result = findPath(graph[0], graph[graph.length - 1])
+  console.log(`Path with length ${result.length} found in ${Date.now() - startTime}ms`)
+}
+time(findPath)
